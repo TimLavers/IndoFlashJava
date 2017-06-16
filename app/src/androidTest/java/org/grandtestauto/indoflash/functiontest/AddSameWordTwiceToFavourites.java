@@ -8,12 +8,12 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 /**
- * Check that the "Add to favourites" button works.
+ * See Issue #2.
  *
  * @author Tim Lavers
  */
 @RunWith(AndroidJUnit4.class)
-public class AddFavourite extends TestBase {
+public class AddSameWordTwiceToFavourites extends TestBase {
 
     @Test
     public void doIt() {
@@ -22,25 +22,30 @@ public class AddFavourite extends TestBase {
 
         ui.addCurrentWordAsFavourite();
 
+        ui.checkCurrentWordIs("you");//Sanity check that we are about to add the same word again to the favourites.
+
+        ui.addCurrentWordAsFavourite();
+
+        ui.showDefinitionOfCurrentWord();
+        ui.activateNextButton();
+
+        ui.checkCurrentWordIs("what");//Sanity check that we added "you/anda" twice as a favourite.
+
+        ui.addCurrentWordAsFavourite();//So that two distinct words have been added as favourites.
+
+        WordListSelectorProxy wordListSelectorProxy = ui.activateWordListSelectorButton();
+        wordListSelectorProxy.selectFavourites();
+
+        ui.checkCurrentWordIs("you");
+
+        ui.checkTranslationIsEmpty();
+
         ui.showDefinitionOfCurrentWord();
 
         ui.checkTranslationIs("anda");
 
         ui.activateNextButton();
 
-        ui.checkCurrentWordIs("what");
-
-        ui.activateNextButton();
-
-        WordListSelectorProxy wordListSelectorProxy = ui.activateWordListSelectorButton();
-        wordListSelectorProxy.selectFavourites();
-
-        ui.checkCurrentWordIs("you");//It was previously showing "what".
-
-        ui.checkTranslationIsEmpty();//It was previously showing "anda".
-
-        ui.showDefinitionOfCurrentWord();
-
-        ui.checkTranslationIs("anda");//Check that the definition is carried along with a word.
+        ui.checkCurrentWordIs("what");//Not "you/anda" even though it was added twice.
     }
 }

@@ -3,6 +3,7 @@ package org.grandtestauto.indoflash.testui;
 import android.view.View;
 import android.widget.ListView;
 
+import org.hamcrest.BaseMatcher;
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
 import org.hamcrest.TypeSafeMatcher;
@@ -24,6 +25,24 @@ public class WordListSelectorProxy extends ListViewProxy{
     }
 
     public void selectFavourites() {
-        onData(withText("Favourites")).perform(click());
+        onData(new ContainsMatcher("Favourites")).perform(click());
+    }
+}
+class ContainsMatcher extends BaseMatcher<String> {
+
+    private String toMatch;
+
+    ContainsMatcher(String toMatch) {
+        this.toMatch = toMatch;
+    }
+
+    @Override
+    public boolean matches(Object item) {
+        return item.toString().contains(toMatch);
+    }
+
+    @Override
+    public void describeTo(Description description) {
+
     }
 }
