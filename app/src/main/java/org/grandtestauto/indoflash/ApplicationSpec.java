@@ -12,7 +12,7 @@ import java.util.List;
  * Topic and sub-topic structure for the word lists that make up
  * the application. Read from XML.
  *
- * @author TimL
+ * @author Tim Lavers
  */
 public class ApplicationSpec {
     private static final String FLASH_CARDS_APP_TAG = "FlashCardsApp";
