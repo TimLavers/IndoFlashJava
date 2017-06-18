@@ -2,22 +2,28 @@ package org.grandtestauto.indoflash;
 
 import android.util.Log;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.Reader;
+import java.io.Writer;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
-/** @author TimL */
-public class WordList {
+/**
+ * @author TimL
+ */
+class WordList {
     private static final String LOG_ID = "IndoFlash.WordList";
     private List<Word> words;
 
-    public static interface ErrorHandler {
-        void showErrorMessageToUser(String errorMessage, Throwable throwable);
+    WordList(List<Word> words) {
+        this.words = new LinkedList<>(words);
     }
 
-    public static WordList readFromStream(Reader reader) throws IOException {
-        List<Word> words = new LinkedList<Word>();
+    static WordList readFromStream(Reader reader) throws IOException {
+        List<Word> words = new LinkedList<>();
         BufferedReader bufferedReader = new BufferedReader(reader);
         String nextLine = bufferedReader.readLine();
         while (nextLine != null) {
@@ -31,10 +37,6 @@ public class WordList {
         return new WordList(words);
     }
 
-    public WordList(List<Word> words) {
-        this.words = new LinkedList<Word>(words);
-    }
-
     public List<Word> words() {
         return Collections.unmodifiableList(words);
     }
@@ -44,7 +46,7 @@ public class WordList {
         words.add(word);
     }
 
-    public void remove(Word word) {
+    void remove(Word word) {
         words.remove(word);
     }
 
@@ -53,12 +55,12 @@ public class WordList {
         return "WordList" + words;
     }
 
-    public void storeIn(Writer writer, ErrorHandler eh) {
-        Log.d(LOG_ID, "storeIn: " );
+    void storeIn(Writer writer, ErrorHandler eh) {
+        Log.d(LOG_ID, "storeIn: ");
         BufferedWriter bw = new BufferedWriter(writer);
         for (Word word : words) {
             try {
-                Log.d(LOG_ID, "storeIn, adding word: " + word );
+                Log.d(LOG_ID, "storeIn, adding word: " + word);
                 bw.append(word.word());
                 bw.append("=");
                 bw.append(word.definition());
@@ -72,5 +74,9 @@ public class WordList {
         } catch (Throwable e) {
             eh.showErrorMessageToUser("Problem saving word list....", e);
         }
+    }
+
+    interface ErrorHandler {
+        void showErrorMessageToUser(String errorMessage, Throwable throwable);
     }
 }

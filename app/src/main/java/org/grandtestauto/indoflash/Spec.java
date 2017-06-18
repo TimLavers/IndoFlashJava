@@ -9,16 +9,16 @@ import org.w3c.dom.NodeList;
  *
  * @author TimL
  */
-public class Spec {
+class Spec {
 
+    private static final String TITLE_TAG = "Title";
     private String title;
-    public static final String TITLE_TAG = "Title";
 
-    public Spec(String title) {
+    Spec(String title) {
         this.title = title;
     }
 
-    public Spec(Element node) {
+    Spec(Element node) {
         NodeList childNodes = node.getChildNodes();
         for (int i = 0; i < childNodes.getLength(); i++) {
             Node child = childNodes.item(i);
@@ -28,7 +28,7 @@ public class Spec {
         }
     }
 
-   public String title() {
+    public String title() {
         return title;
     }
 }

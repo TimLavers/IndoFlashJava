@@ -1,14 +1,23 @@
 package org.grandtestauto.indoflash;
 
-import java.io.*;
-import java.lang.reflect.Field;
-import java.util.Collections;
-import java.util.List;
-
 import android.app.Application;
 import android.content.Context;
 import android.util.Log;
+
 import org.xml.sax.SAXException;
+
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.io.UnsupportedEncodingException;
+import java.lang.reflect.Field;
+import java.util.Collections;
+import java.util.List;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -91,11 +100,11 @@ public class IndoFlash extends Application {
     }
 
     private void storeSetting(String key, boolean value) {
-        getSharedPreferences(PREFERENCES_NAME, Context.MODE_PRIVATE).edit().putBoolean(key, value);
+        getSharedPreferences(PREFERENCES_NAME, Context.MODE_PRIVATE).edit().putBoolean(key, value).apply();
     }
 
-    private void storeSetting(String key, String  value) {
-        getSharedPreferences(PREFERENCES_NAME, Context.MODE_PRIVATE).edit().putString(key, value);
+    private void storeSetting(String key, String value) {
+        getSharedPreferences(PREFERENCES_NAME, Context.MODE_PRIVATE).edit().putString(key, value).apply();
     }
 
     private String getSetting(String key) {
@@ -141,11 +150,11 @@ public class IndoFlash extends Application {
     }
 
     public void toggleShuffle() {
-        shuffle = ! shuffle;
+        shuffle = !shuffle;
     }
 
     public boolean showingFavourites() {
-        return  showingFavourites;
+        return showingFavourites;
     }
 
     private void parseSetupFileToApplicationSpec() {
@@ -189,7 +198,7 @@ public class IndoFlash extends Application {
             Log.d(LOG_ID, "Could not find file " + FAVOURITES_FILE_NAME + " when reading from favourites.", e);
             return new WordList(Collections.<Word>emptyList());
         }
-        InputStreamReader reader = null;
+        InputStreamReader reader;
         try {
             reader = new InputStreamReader(fin, "UTF-8");
         } catch (UnsupportedEncodingException e) {

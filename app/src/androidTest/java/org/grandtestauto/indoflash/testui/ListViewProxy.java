@@ -17,24 +17,10 @@ import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.Matchers.anything;
 
-public class ListViewProxy extends ViewProxy{
+public class ListViewProxy extends ViewProxy {
 
     public ListViewProxy(int id) {
         super(id);
-    }
-
-    public void checkElements(List<String> expected) {
-        for (int i = 0; i < expected.size(); i++) {
-            onData(anything())
-                    .inAdapterView(withId(id()))
-                    .atPosition(i)
-                    .check(matches(withText(expected.get(i))));
-        }
-        onView(withId(id())).check(matches(withListSize(expected.size())));
-    }
-
-    public void select(int position) {
-        onData(withId(id())).atPosition(position).perform(click());
     }
 
     /*
@@ -52,5 +38,19 @@ public class ListViewProxy extends ViewProxy{
                 description.appendText("ListView should have " + size + " items");
             }
         };
+    }
+
+    public void checkElements(List<String> expected) {
+        for (int i = 0; i < expected.size(); i++) {
+            onData(anything())
+                    .inAdapterView(withId(id()))
+                    .atPosition(i)
+                    .check(matches(withText(expected.get(i))));
+        }
+        onView(withId(id())).check(matches(withListSize(expected.size())));
+    }
+
+    public void select(String itemText) {
+        onData(new ContainsMatcher(itemText)).perform(click());
     }
 }

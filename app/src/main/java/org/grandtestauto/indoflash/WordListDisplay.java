@@ -1,10 +1,10 @@
 package org.grandtestauto.indoflash;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.app.Activity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -13,11 +13,12 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
-//import com.google.analytics.tracking.android.EasyTracker;
 
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
+
+//import com.google.analytics.tracking.android.EasyTracker;
 
 public class WordListDisplay extends Activity {
 
@@ -26,7 +27,6 @@ public class WordListDisplay extends Activity {
     private TextView wordView;
     private TextView definitionView;
     private Button nextButton;
-    private ImageButton showListsButton;
     private ImageButton indonesianFirstButton;
     private ImageButton addRemoveFavouriteButton;
     private ImageButton shuffleButton;
@@ -34,7 +34,6 @@ public class WordListDisplay extends Activity {
     private boolean finished = false;
     private int currentPosition = 0;
     private WordList wordList;
-    public static final String LOG_ID = "IndoFlash:WordListDisplay";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,7 +64,7 @@ public class WordListDisplay extends Activity {
             }
         });
 
-        showListsButton = (ImageButton) findViewById(R.id.show_word_lists_button);
+        ImageButton showListsButton = (ImageButton) findViewById(R.id.show_word_lists_button);
         showListsButton.setImageResource(R.drawable.ic_lists);
         showListsButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
@@ -85,28 +84,10 @@ public class WordListDisplay extends Activity {
         doSetup();
     }
 
-    /**
-     * Overridden to provide a hook for Google Analytics.
-     */
-//    @Override
-//    public void onStart() {
-//        super.onStart();
-//        EasyTracker.getInstance(this).activityStart(this);
-//    }
-
-    /**
-     * Overridden to provide a hook for Google Analytics.
-     */
-//    @Override
-//    public void onStop() {
-//        super.onStop();
-//        EasyTracker.getInstance(this).activityStop(this);
-//    }
-
     private void loadWordList() {
         wordList = application.wordList();
         if (application.shuffle()) {
-            List<Word> toShuffle = new LinkedList<Word>();
+            List<Word> toShuffle = new LinkedList<>();
             toShuffle.addAll(wordList.words());
             Collections.shuffle(toShuffle);
             wordList = new WordList(toShuffle);
@@ -155,7 +136,7 @@ public class WordListDisplay extends Activity {
             }
         });
         builder.setTitle(getApplicationContext().getResources().getString(R.string.info));
-        builder.setMessage(getApplicationContext().getResources().getString(R.string.acknowledgements) );
+        builder.setMessage(getApplicationContext().getResources().getString(R.string.acknowledgements));
         // Create the AlertDialog
         AlertDialog dialog = builder.create();
         dialog.show();
@@ -170,7 +151,7 @@ public class WordListDisplay extends Activity {
             }
         });
         builder.setTitle(getApplicationContext().getResources().getString(R.string.help));
-        builder.setMessage(getApplicationContext().getResources().getString(R.string.help_text) );
+        builder.setMessage(getApplicationContext().getResources().getString(R.string.help_text));
         // Create the AlertDialog
         AlertDialog dialog = builder.create();
         dialog.show();
@@ -193,7 +174,8 @@ public class WordListDisplay extends Activity {
         }
         CharSequence description = indonesianFirstButton.getContext().getResources().getText(resourceId);
         indonesianFirstButton.setContentDescription(description);
-        if (showToast) Toast.makeText(getApplicationContext(), description, Toast.LENGTH_SHORT).show();
+        if (showToast)
+            Toast.makeText(getApplicationContext(), description, Toast.LENGTH_SHORT).show();
     }
 
     private void toggleShuffle() {

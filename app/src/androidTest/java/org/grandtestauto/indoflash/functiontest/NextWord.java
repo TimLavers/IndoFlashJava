@@ -6,27 +6,29 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 /**
- * Check that the "Add to favourites" button works.
+ * Checks that the Show/Next button works as expected.
  *
  * @author Tim Lavers
  */
 @RunWith(AndroidJUnit4.class)
-public class AddFavourite extends TestBase {
+public class NextWord extends TestBase {
 
     @Test
     public void doIt() {
-        ui.checkCurrentWordIs("you");//Sanity check.
-        ui.addToOrRemoveFromFavourites();
+        ui.checkCurrentWordIs("you");
+        ui.checkTranslationIsEmpty();
         ui.showDefinitionOfCurrentWord();
+        ui.checkCurrentWordIs("you");
         ui.checkTranslationIs("anda");
 
         ui.activateNextButton();
-        ui.checkCurrentWordIs("what");
 
-        showFavourites();
-        ui.checkCurrentWordIs("you");//It was previously showing "what".
-        ui.checkTranslationIsEmpty();//It was previously showing "anda".
+        ui.checkCurrentWordIs("what");
+        ui.checkTranslationIsEmpty();
+
         ui.showDefinitionOfCurrentWord();
-        ui.checkTranslationIs("anda");//Check that the definition is carried along with a word.
+
+        ui.checkCurrentWordIs("what");
+        ui.checkTranslationIs("apa");
     }
 }

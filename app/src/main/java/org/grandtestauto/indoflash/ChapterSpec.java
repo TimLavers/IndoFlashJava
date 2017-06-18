@@ -13,10 +13,10 @@ import java.util.List;
  * @author TimL
  */
 public class ChapterSpec extends Spec {
-    public static final String CHAPTER = "Chapter";
-    private List<WordListSpec> wordLists = new LinkedList<WordListSpec>();
+    static final String CHAPTER = "Chapter";
+    private List<WordListSpec> wordLists = new LinkedList<>();
 
-    public ChapterSpec(String title) {
+    ChapterSpec(String title) {
         super(title);
     }
 

@@ -1,12 +1,14 @@
 package org.grandtestauto.indoflash;
 
 
-/** @author TimL */
-public class Word {
+/**
+ * @author TimL
+ */
+class Word {
     private String word;
     private String definition;
 
-    public Word(String word, String definition) {
+    Word(String word, String definition) {
         this.word = word;
         this.definition = definition;
     }
@@ -15,7 +17,7 @@ public class Word {
         return word;
     }
 
-    public String definition() {
+    String definition() {
         return definition;
     }
 
@@ -25,9 +27,8 @@ public class Word {
 
         Word word1 = (Word) o;
 
-        if (!word.equalsIgnoreCase(word1.word)) return false;
+        return word.equalsIgnoreCase(word1.word);
 
-        return true;
     }
 
     public int hashCode() {

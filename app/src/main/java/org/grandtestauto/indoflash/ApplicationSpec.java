@@ -15,22 +15,18 @@ import java.util.List;
  * @author TimL
  */
 public class ApplicationSpec {
-    public static final String FLASH_CARDS_APP_TAG = "FlashCardsApp";
-    public static final String CHAPTERS_TAG = "Chapters";
-    public static final String APP_NAME_TAG = "AppName";
+    private static final String FLASH_CARDS_APP_TAG = "FlashCardsApp";
+    private static final String CHAPTERS_TAG = "Chapters";
+    private static final String APP_NAME_TAG = "AppName";
 
-    private List<ChapterSpec> chapterSpecs = new LinkedList<ChapterSpec>();
+    private List<ChapterSpec> chapterSpecs = new LinkedList<>();
 
-    public ApplicationSpec(Document document) {
-        NodeList childNodes = document.getElementsByTagName(APP_NAME_TAG);
-        Node appNameNode = childNodes.item(0);
-
+    ApplicationSpec(Document document) {
         Node appNode = document.getElementsByTagName(FLASH_CARDS_APP_TAG).item(0);
         NodeList children = appNode.getChildNodes();
         for (int i = 0; i < children.getLength(); i++) {
             Node child = children.item(i);
-            if (child.getNodeName().equals(FLASH_CARDS_APP_TAG)) {
-            } else if (child.getNodeName().equals(CHAPTERS_TAG)) {
+            if (child.getNodeName().equals(CHAPTERS_TAG)) {
                 NodeList chapterNodes = ((Element) child).getElementsByTagName(ChapterSpec.CHAPTER);
                 for (int c = 0; c < chapterNodes.getLength(); c++) {
                     chapterSpecs.add(new ChapterSpec((Element) chapterNodes.item(c)));
@@ -38,12 +34,12 @@ public class ApplicationSpec {
             }
         }
     }
-    
+
     public List<ChapterSpec> chapterSpecs() {
         return chapterSpecs;
     }
 
-    public ChapterSpec chapterForName(String name) {
+    ChapterSpec chapterForName(String name) {
         for (ChapterSpec spec : chapterSpecs) {
             if (spec.title().equals(name)) {
                 return spec;

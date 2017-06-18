@@ -1,7 +1,5 @@
 package org.grandtestauto.indoflash;
 
-import android.test.AndroidTestCase;
-import org.grandtestauto.indoflash.WordListSpec;
 import org.junit.Assert;
 import org.junit.Test;
 

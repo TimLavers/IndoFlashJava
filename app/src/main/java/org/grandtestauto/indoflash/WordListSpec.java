@@ -1,13 +1,8 @@
 package org.grandtestauto.indoflash;
 
-import android.util.Log;
-import android.widget.Toast;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
-
-import java.io.File;
-import java.lang.reflect.Field;
 
 /**
  * Title and filename for a word list. Read from XML.
@@ -15,18 +10,18 @@ import java.lang.reflect.Field;
  * @author TimL
  */
 public class WordListSpec extends Spec {
-    public static final String TAG = "WordList";
+    static final String TAG = "WordList";
 
-    public static final String FILE_TAG = "File";
+    private static final String FILE_TAG = "File";
 
     private String fileName;
 
-    public WordListSpec(String title, String fileName) {
+    WordListSpec(String title, String fileName) {
         super(title);
         this.fileName = fileName;
     }
 
-    public WordListSpec(Element node) {
+    WordListSpec(Element node) {
         super(node);
         NodeList childNodes = node.getElementsByTagName(FILE_TAG);
         Node child = childNodes.item(0);
@@ -38,7 +33,7 @@ public class WordListSpec extends Spec {
         return title();
     }
 
-    public String fileName() {
+    String fileName() {
         return fileName;
     }
 }

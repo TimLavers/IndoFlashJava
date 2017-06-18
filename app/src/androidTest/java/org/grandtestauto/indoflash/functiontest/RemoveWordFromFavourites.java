@@ -6,27 +6,27 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 /**
- * Check that the "Add to favourites" button works.
+ * Check that in the Favourites list, removing a word moves to the next word.
  *
  * @author Tim Lavers
  */
 @RunWith(AndroidJUnit4.class)
-public class AddFavourite extends TestBase {
+public class RemoveWordFromFavourites extends TestBase {
 
     @Test
     public void doIt() {
         ui.checkCurrentWordIs("you");//Sanity check.
         ui.addToOrRemoveFromFavourites();
         ui.showDefinitionOfCurrentWord();
-        ui.checkTranslationIs("anda");
-
         ui.activateNextButton();
-        ui.checkCurrentWordIs("what");
 
+        ui.checkCurrentWordIs("what");
+        ui.addToOrRemoveFromFavourites();
         showFavourites();
-        ui.checkCurrentWordIs("you");//It was previously showing "what".
-        ui.checkTranslationIsEmpty();//It was previously showing "anda".
-        ui.showDefinitionOfCurrentWord();
-        ui.checkTranslationIs("anda");//Check that the definition is carried along with a word.
+        ui.checkCurrentWordIs("you");
+
+        ui.addToOrRemoveFromFavourites();
+        ui.checkCurrentWordIs("what");
+        ui.checkTranslationIsEmpty();
     }
 }
