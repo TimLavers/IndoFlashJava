@@ -18,8 +18,6 @@ import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
-//import com.google.analytics.tracking.android.EasyTracker;
-
 public class WordListDisplay extends Activity {
 
     private IndoFlash application;

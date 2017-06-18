@@ -2,7 +2,9 @@ package org.grandtestauto.indoflash;
 
 
 /**
- * @author TimL
+ * A word to be learnt, together with its translation.
+ *
+ * @author Tim Lavers
  */
 class Word {
     private String word;

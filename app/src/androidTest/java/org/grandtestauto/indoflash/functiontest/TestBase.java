@@ -36,8 +36,6 @@ public class TestBase {
         application.setCurrentChapter(chapter1Spec);
         application.setWordList(chapter1Spec.wordLists().get(0));
 
-//        ui.finish();
-//        activity.finish();
         application.clearFavourites();
         if (application.shuffle()) {
             application.toggleShuffle();

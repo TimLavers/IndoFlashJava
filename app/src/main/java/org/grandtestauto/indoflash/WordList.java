@@ -12,7 +12,9 @@ import java.util.LinkedList;
 import java.util.List;
 
 /**
- * @author TimL
+ * List of words for the user to learn.
+ *
+ * @author Tim Lavers
  */
 class WordList {
     private static final String LOG_ID = "IndoFlash.WordList";

@@ -10,14 +10,13 @@ import java.util.List;
 
 /**
  * Topic and sub-topic structure for the word lists that make up
- * a Flash Cards application. Read from XML.
+ * the application. Read from XML.
  *
  * @author TimL
  */
 public class ApplicationSpec {
     private static final String FLASH_CARDS_APP_TAG = "FlashCardsApp";
     private static final String CHAPTERS_TAG = "Chapters";
-    private static final String APP_NAME_TAG = "AppName";
 
     private List<ChapterSpec> chapterSpecs = new LinkedList<>();
 

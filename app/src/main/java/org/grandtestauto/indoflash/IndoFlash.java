@@ -23,6 +23,13 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
+/**
+ * The main application. Holds the state such as the list of words
+ * currently being studied, whether or not to shuffle the list,
+ * and so on.
+ *
+ * @author Tim Lavers
+ */
 public class IndoFlash extends Application {
     public static final String FAVOURITES_FILE_NAME = "favourites";
     public static final String LOG_ID = "IndoFlash:IndoFlash";

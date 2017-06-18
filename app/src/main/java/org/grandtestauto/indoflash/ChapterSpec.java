@@ -8,17 +8,13 @@ import java.util.List;
 
 /**
  * Sub-topic structure for the word lists that make up
- * a chapter in a Flash Cards application. Read from XML.
+ * a chapter in the application. Read from XML.
  *
- * @author TimL
+ * @author Tim Lavers
  */
 public class ChapterSpec extends Spec {
     static final String CHAPTER = "Chapter";
     private List<WordListSpec> wordLists = new LinkedList<>();
-
-    ChapterSpec(String title) {
-        super(title);
-    }
 
     public ChapterSpec(Element node) {
         super(node);
