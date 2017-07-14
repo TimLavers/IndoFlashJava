@@ -190,7 +190,7 @@ public class IndoFlash extends Application {
             int fileNameInt = fileNameIntField.getInt(null);
             InputStream inputStream = getResources().openRawResource(fileNameInt);
             BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream, "UTF-8"));
-            return WordList.readFromStream(reader);
+            return WordList.read(reader);
         } catch (Throwable e) {
             Log.e(LOG_ID, "Problem loading file", e);
             return new WordList(Collections.<Word>emptyList());
@@ -213,7 +213,7 @@ public class IndoFlash extends Application {
             return new WordList(Collections.<Word>emptyList());
         }
         try {
-            return WordList.readFromStream(reader);
+            return WordList.read(reader);
         } catch (IOException e) {
             Log.d(LOG_ID, "Problem when reading from favourites.", e);
             return new WordList(Collections.<Word>emptyList());
@@ -233,7 +233,7 @@ public class IndoFlash extends Application {
         } catch (UnsupportedEncodingException e) {
             Log.d(LOG_ID, "Bad coding when writing to favourites.", e);
         }
-        toStore.storeIn(writer, new WordList.ErrorHandler() {
+        toStore.store(writer, new WordList.ErrorHandler() {
             @Override
             public void showErrorMessageToUser(String errorMessage, Throwable throwable) {
                 Log.d("IndoFlash.Favourites", "Could not store favourites.", throwable);

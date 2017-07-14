@@ -1,7 +1,5 @@
 package org.grandtestauto.indoflash;
 
-import android.util.Log;
-
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -24,7 +22,7 @@ class WordList {
         this.words = new LinkedList<>(words);
     }
 
-    static WordList readFromStream(Reader reader) throws IOException {
+    static WordList read(Reader reader) throws IOException {
         List<Word> words = new LinkedList<>();
         BufferedReader bufferedReader = new BufferedReader(reader);
         String nextLine = bufferedReader.readLine();
@@ -52,17 +50,10 @@ class WordList {
         words.remove(word);
     }
 
-    @Override
-    public String toString() {
-        return "WordList" + words;
-    }
-
-    void storeIn(Writer writer, ErrorHandler eh) {
-        Log.d(LOG_ID, "storeIn: ");
+    void store(Writer writer, ErrorHandler eh) {
         BufferedWriter bw = new BufferedWriter(writer);
         for (Word word : words) {
             try {
-                Log.d(LOG_ID, "storeIn, adding word: " + word);
                 bw.append(word.word());
                 bw.append("=");
                 bw.append(word.definition());
