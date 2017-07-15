@@ -43,4 +43,11 @@ public class ChapterSpecTest {
         Assert.assertEquals(IndoFlash.FAVOURITES_FILE_NAME, spec.forName(ChapterSpec.FAVOURITES).fileName());
         Assert.assertNull(spec.forName("not there"));
     }
+
+    @Test
+    public void toStringTest() throws Exception {
+        Node appNode = parseNode(XML, ChapterSpec.CHAPTER);
+        ChapterSpec spec = new ChapterSpec((Element) appNode);
+        Assert.assertEquals("Lessons 1 - 10", spec.toString());
+    }
 }

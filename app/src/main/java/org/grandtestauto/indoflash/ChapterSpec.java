@@ -26,6 +26,11 @@ public class ChapterSpec extends Spec {
         wordLists.add(new WordListSpec(FAVOURITES, IndoFlash.FAVOURITES_FILE_NAME));
     }
 
+    @Override
+    public String toString() {
+        return title();
+    }
+
     public List<WordListSpec> wordLists() {
         return wordLists;
     }

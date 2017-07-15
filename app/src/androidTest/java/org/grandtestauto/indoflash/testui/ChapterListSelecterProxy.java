@@ -4,7 +4,7 @@ import org.grandtestauto.indoflash.R;
 
 public class ChapterListSelecterProxy extends ListViewProxy {
 
-    ChapterListSelecterProxy() {
+    public ChapterListSelecterProxy() {
         super(R.id.chapters_list);
     }
 

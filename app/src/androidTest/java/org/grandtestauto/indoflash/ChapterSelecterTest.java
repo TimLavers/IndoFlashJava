@@ -3,7 +3,7 @@ package org.grandtestauto.indoflash;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 
-import org.grandtestauto.indoflash.testui.ListViewProxy;
+import org.grandtestauto.indoflash.testui.ChapterListSelecterProxy;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -28,6 +28,6 @@ public class ChapterSelecterTest {
         expectedChapters.add("Lessons 41 - 50");
         expectedChapters.add("Lessons 51 - 57");
 
-        new ListViewProxy(R.id.chapters_list).checkElements(expectedChapters);
+        new ChapterListSelecterProxy().checkElements(expectedChapters);
     }
 }
