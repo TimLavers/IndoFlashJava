@@ -14,27 +14,23 @@ import java.util.List;
  */
 public class ChapterSpec extends Spec {
     static final String CHAPTER = "Chapter";
+    static final String FAVOURITES = "Favourites";
     private List<WordListSpec> wordLists = new LinkedList<>();
 
-    public ChapterSpec(Element node) {
+    ChapterSpec(Element node) {
         super(node);
         NodeList childNodes = node.getElementsByTagName(WordListSpec.TAG);
         for (int i = 0; i < childNodes.getLength(); i++) {
             wordLists.add(new WordListSpec((Element) childNodes.item(i)));
         }
-        wordLists.add(new WordListSpec("Favourites", IndoFlash.FAVOURITES_FILE_NAME));
+        wordLists.add(new WordListSpec(FAVOURITES, IndoFlash.FAVOURITES_FILE_NAME));
     }
 
     public List<WordListSpec> wordLists() {
         return wordLists;
     }
 
-    @Override
-    public String toString() {
-        return title();
-    }
-
-    public WordListSpec forName(String name) {
+    WordListSpec forName(String name) {
         for (WordListSpec list : wordLists) {
             if (list.title().equals(name)) {
                 return list;
