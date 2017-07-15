@@ -1,4 +1,4 @@
-package org.grandtestauto.indoflash;
+package org.grandtestauto.indoflash.spec;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -15,6 +15,9 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
+/**
+ * @author Tim Lavers
+ */
 public class WordListSpecTest {
 
     private static WordListSpec wordListSpec(String title, String fileName) {

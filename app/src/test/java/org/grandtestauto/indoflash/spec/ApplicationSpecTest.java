@@ -1,10 +1,11 @@
-package org.grandtestauto.indoflash;
+package org.grandtestauto.indoflash.spec;
 
 import org.junit.Assert;
 import org.junit.Test;
 
-import static org.grandtestauto.indoflash.WordListSpecTest.getDocument;
-
+/**
+ * @author Tim Lavers
+ */
 public class ApplicationSpecTest {
 
     private static final String XML = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>\n" +
@@ -37,7 +38,7 @@ public class ApplicationSpecTest {
 
     @Test
     public void constructFromNode() throws Exception {
-        ApplicationSpec spec = new ApplicationSpec(getDocument(XML));
+        ApplicationSpec spec = new ApplicationSpec(WordListSpecTest.getDocument(XML));
         Assert.assertEquals(2, spec.chapterSpecs().size());
         Assert.assertEquals("Lessons 1 - 10", spec.chapterSpecs().get(0).title());
         Assert.assertEquals("Lessons 11 - 20", spec.chapterSpecs().get(1).title());
@@ -45,7 +46,7 @@ public class ApplicationSpecTest {
 
     @Test
     public void chapterForName() throws Exception {
-        ApplicationSpec spec = new ApplicationSpec(getDocument(XML));
+        ApplicationSpec spec = new ApplicationSpec(WordListSpecTest.getDocument(XML));
         Assert.assertEquals("Lessons 1 - 10", spec.chapterForName("Lessons 1 - 10").title());
         Assert.assertNull(spec.chapterForName("not there"));
     }

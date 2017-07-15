@@ -4,6 +4,11 @@ import android.app.Application;
 import android.content.Context;
 import android.util.Log;
 
+import org.grandtestauto.indoflash.spec.ApplicationSpec;
+import org.grandtestauto.indoflash.spec.ChapterSpec;
+import org.grandtestauto.indoflash.spec.WordListSpec;
+import org.grandtestauto.indoflash.word.Word;
+import org.grandtestauto.indoflash.word.WordList;
 import org.xml.sax.SAXException;
 
 import java.io.BufferedReader;

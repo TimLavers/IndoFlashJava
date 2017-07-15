@@ -1,4 +1,4 @@
-package org.grandtestauto.indoflash;
+package org.grandtestauto.indoflash.word;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -14,15 +14,14 @@ import java.util.List;
  *
  * @author Tim Lavers
  */
-class WordList {
-    private static final String LOG_ID = "IndoFlash.WordList";
+public class WordList {
     private List<Word> words;
 
-    WordList(List<Word> words) {
+    public WordList(List<Word> words) {
         this.words = new LinkedList<>(words);
     }
 
-    static WordList read(Reader reader) throws IOException {
+    public static WordList read(Reader reader) throws IOException {
         List<Word> words = new LinkedList<>();
         BufferedReader bufferedReader = new BufferedReader(reader);
         String nextLine = bufferedReader.readLine();
@@ -46,11 +45,11 @@ class WordList {
         words.add(word);
     }
 
-    void remove(Word word) {
+    public void remove(Word word) {
         words.remove(word);
     }
 
-    void store(Writer writer, ErrorHandler eh) {
+    public void store(Writer writer, ErrorHandler eh) {
         BufferedWriter bw = new BufferedWriter(writer);
         for (Word word : words) {
             try {
@@ -69,7 +68,7 @@ class WordList {
         }
     }
 
-    interface ErrorHandler {
+    public interface ErrorHandler {
         void showErrorMessageToUser(String errorMessage, Throwable throwable);
     }
 }

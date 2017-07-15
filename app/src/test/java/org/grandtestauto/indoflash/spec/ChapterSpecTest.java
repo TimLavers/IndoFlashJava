@@ -1,5 +1,6 @@
-package org.grandtestauto.indoflash;
+package org.grandtestauto.indoflash.spec;
 
+import org.grandtestauto.indoflash.IndoFlash;
 import org.junit.Assert;
 import org.junit.Test;
 import org.w3c.dom.Element;
@@ -7,8 +8,9 @@ import org.w3c.dom.Node;
 
 import java.util.List;
 
-import static org.grandtestauto.indoflash.WordListSpecTest.parseNode;
-
+/**
+ * @author Tim Lavers
+ */
 public class ChapterSpecTest {
 
     private static final String XML = "<Chapter>" +
@@ -19,7 +21,7 @@ public class ChapterSpecTest {
 
     @Test
     public void constructFromNode() throws Exception {
-        Node appNode = parseNode(XML, ChapterSpec.CHAPTER);
+        Node appNode = WordListSpecTest.parseNode(XML, ChapterSpec.CHAPTER);
         ChapterSpec spec = new ChapterSpec((Element) appNode);
         Assert.assertEquals("Lessons 1 - 10", spec.title());
         //Check that the ChapterSpec contains specs for the word lists
@@ -36,7 +38,7 @@ public class ChapterSpecTest {
 
     @Test
     public void forName() throws Exception {
-        Node appNode = parseNode(XML, ChapterSpec.CHAPTER);
+        Node appNode = WordListSpecTest.parseNode(XML, ChapterSpec.CHAPTER);
         ChapterSpec spec = new ChapterSpec((Element) appNode);
         Assert.assertEquals("lesson2", spec.forName("Lesson 2").fileName());
         Assert.assertEquals("lesson3", spec.forName("Lesson 3").fileName());
@@ -46,7 +48,7 @@ public class ChapterSpecTest {
 
     @Test
     public void toStringTest() throws Exception {
-        Node appNode = parseNode(XML, ChapterSpec.CHAPTER);
+        Node appNode = WordListSpecTest.parseNode(XML, ChapterSpec.CHAPTER);
         ChapterSpec spec = new ChapterSpec((Element) appNode);
         Assert.assertEquals("Lessons 1 - 10", spec.toString());
     }

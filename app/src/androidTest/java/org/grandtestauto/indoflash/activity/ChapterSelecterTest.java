@@ -1,4 +1,4 @@
-package org.grandtestauto.indoflash;
+package org.grandtestauto.indoflash.activity;
 
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;

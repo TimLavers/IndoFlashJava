@@ -1,8 +1,11 @@
-package org.grandtestauto.indoflash;
+package org.grandtestauto.indoflash.word;
 
 import org.junit.Assert;
 import org.junit.Test;
 
+/**
+ * @author Tim Lavers
+ */
 public class WordTest {
 
     @SuppressWarnings({"EqualsBetweenInconvertibleTypes", "ObjectEqualsNull"})

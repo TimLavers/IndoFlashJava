@@ -1,4 +1,4 @@
-package org.grandtestauto.indoflash;
+package org.grandtestauto.indoflash.activity;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -8,6 +8,10 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.ListView;
+
+import org.grandtestauto.indoflash.IndoFlash;
+import org.grandtestauto.indoflash.R;
+import org.grandtestauto.indoflash.spec.WordListSpec;
 
 import java.util.List;
 

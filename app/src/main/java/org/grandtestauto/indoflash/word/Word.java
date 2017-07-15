@@ -1,4 +1,4 @@
-package org.grandtestauto.indoflash;
+package org.grandtestauto.indoflash.word;
 
 
 import android.support.annotation.NonNull;
@@ -8,7 +8,7 @@ import android.support.annotation.NonNull;
  *
  * @author Tim Lavers
  */
-class Word {
+public class Word {
     private
     @NonNull
     String word;
@@ -16,7 +16,7 @@ class Word {
     @NonNull
     String definition;
 
-    Word(@NonNull String word, @NonNull String definition) {
+    public Word(@NonNull String word, @NonNull String definition) {
         this.word = word;
         this.definition = definition;
     }
@@ -25,7 +25,7 @@ class Word {
         return word;
     }
 
-    String definition() {
+    public String definition() {
         return definition;
     }
 

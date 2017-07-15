@@ -1,5 +1,6 @@
-package org.grandtestauto.indoflash;
+package org.grandtestauto.indoflash.spec;
 
+import org.grandtestauto.indoflash.IndoFlash;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 
@@ -35,7 +36,7 @@ public class ChapterSpec extends Spec {
         return wordLists;
     }
 
-    WordListSpec forName(String name) {
+    public WordListSpec forName(String name) {
         for (WordListSpec list : wordLists) {
             if (list.title().equals(name)) {
                 return list;

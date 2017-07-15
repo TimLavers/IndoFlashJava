@@ -1,4 +1,4 @@
-package org.grandtestauto.indoflash;
+package org.grandtestauto.indoflash.spec;
 
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -33,7 +33,7 @@ public class WordListSpec extends Spec {
         return title();
     }
 
-    String fileName() {
+    public String fileName() {
         return fileName;
     }
 }

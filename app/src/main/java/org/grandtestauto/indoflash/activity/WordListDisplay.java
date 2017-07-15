@@ -1,4 +1,4 @@
-package org.grandtestauto.indoflash;
+package org.grandtestauto.indoflash.activity;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -14,10 +14,20 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.grandtestauto.indoflash.IndoFlash;
+import org.grandtestauto.indoflash.R;
+import org.grandtestauto.indoflash.word.Word;
+import org.grandtestauto.indoflash.word.WordList;
+
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
+/**
+ * User interface for working through a word list.
+ *
+ * @author Tim Lavers
+ */
 public class WordListDisplay extends Activity {
 
     private IndoFlash application;

@@ -1,4 +1,4 @@
-package org.grandtestauto.indoflash;
+package org.grandtestauto.indoflash.spec;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -20,7 +20,7 @@ public class ApplicationSpec {
 
     private List<ChapterSpec> chapterSpecs = new LinkedList<>();
 
-    ApplicationSpec(Document document) {
+    public ApplicationSpec(Document document) {
         Node appNode = document.getElementsByTagName(FLASH_CARDS_APP_TAG).item(0);
         NodeList children = appNode.getChildNodes();
         for (int i = 0; i < children.getLength(); i++) {
@@ -38,7 +38,7 @@ public class ApplicationSpec {
         return chapterSpecs;
     }
 
-    ChapterSpec chapterForName(String name) {
+    public ChapterSpec chapterForName(String name) {
         for (ChapterSpec spec : chapterSpecs) {
             if (spec.title().equals(name)) {
                 return spec;
