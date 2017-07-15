@@ -8,6 +8,9 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+/**
+ * @author Tim Lavers
+ */
 @RunWith(AndroidJUnit4.class)
 public class WordListDisplayTest {
     @Rule

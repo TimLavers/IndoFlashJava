@@ -14,8 +14,8 @@ import java.util.List;
  * @author Tim Lavers
  */
 public class ChapterSpec extends Spec {
+    public static final String FAVOURITES = "Favourites";
     static final String CHAPTER = "Chapter";
-    static final String FAVOURITES = "Favourites";
     private List<WordListSpec> wordLists = new LinkedList<>();
 
     ChapterSpec(Element node) {

@@ -9,7 +9,7 @@ import static android.support.test.espresso.action.ViewActions.click;
 
 public class WordListSelecterProxy extends ListViewProxy {
 
-    WordListSelecterProxy() {
+    public WordListSelecterProxy() {
         super(R.id.lists_list);
     }
 
